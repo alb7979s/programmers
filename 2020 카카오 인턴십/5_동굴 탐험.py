@@ -15,23 +15,21 @@ def dfs(node, prevNode):   #dfs에 노드로 처리하면 되지 않아?
             dfs(Node(v), node)
     dic[node.value] = node
 def search(node):
-    global adj2, indegree, visit, check
+    global adj2, indegree, visit
     while 1:
         u = node.value
         visit[u] = 1
         if not u: return
-        if not check[node.prev.value][u]:
+        if u not in adj2[node.prev.value]:
             adj2[node.prev.value].add(u)
-            check[node.prev.value][u]=1
             indegree[u]+=1
         node = node.prev
 def solution(n, path, order):
-    global adj, visit, dic, adj2, indegree, check
+    global adj, visit, dic, adj2, indegree
     adj = [[]*n for _ in range(n)]
     dic = {}
     visit=[0]*n
     visit[0]=1
-    check=[[0]*n for _ in range(n)]
     for u, v in path:
         adj[u].append(v)
         adj[v].append(u)
@@ -43,8 +41,7 @@ def solution(n, path, order):
     for u, v in order:
         if not visit[u]:
             search(dic[u])
-        if not check[u][v]:
-            check[u][v]=1
+        if v not in adj2[u]:
             adj2[u].add(v)
             indegree[v]+=1
     q=deque()
