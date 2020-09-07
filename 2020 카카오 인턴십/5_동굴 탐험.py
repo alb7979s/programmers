@@ -1,4 +1,6 @@
-#효율성 5번 시간초과 위상정렬로는 못푸는건가?
+#입력 stdin.readline으로 바꾸니까 통과됨.. 
+from sys import*
+input=lambda:stdin.readline().strip()
 from collections import*
 #경로 다 구한다음에 topol Sort
 class Node:
