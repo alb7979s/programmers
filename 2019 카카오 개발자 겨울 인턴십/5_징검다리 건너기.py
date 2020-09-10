@@ -23,7 +23,7 @@ def solution(stones, k):
             e = m-1
     return s
 ####################################################
-#슬라이딩 윈도우 + pq :: O(n)
+#슬라이딩 윈도우 + pq :: O(nlogn)?? 힙큐 삽입이 O(logn)이고 총 n개 하니까
 from sys import*
 from heapq import*
 input=lambda:stdin.readline().strip()
